@@ -18,6 +18,7 @@ public class Point implements Comparable<Point>
 	public static final String ANONYMOUS = "__UNNAMED";
 
 	public static final Point ORIGIN;
+	
 	static
 	{
 		ORIGIN = new Point("origin", 0, 0);
@@ -84,6 +85,23 @@ public class Point implements Comparable<Point>
 	public static int LexicographicOrdering(Point p1, Point p2)
 	{
 		// TODO
+		//NULL CASE??
+		if((p1==null) || (p2 == null)){return WHAT;}
+		
+		
+		//if the x value of p1 is greater than p2, return -1
+		if(p1._x < p2._x) {return -1;}
+		if(p1._x > p2._x) {return 1;}
+		
+		//if the y value of p1 is greater than p2 then return -1
+		if(p1._y < p2._y) {return -1;}
+		if(p1._y > p2._y) {return 1;}
+		
+		//if the x values are the same and they y values are the same then return 0
+		
+		return 0;
+		
+		
 	}
 
 	@Override

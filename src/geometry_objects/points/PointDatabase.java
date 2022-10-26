@@ -36,6 +36,8 @@ public class PointDatabase
 
 	public int size() { return _factory.size(); }
 	
+	
+	
 	/**
 	 * Add this point to the database.
 	 *   If the point with the given coordinates are not in the database, we add it (as is)
@@ -48,12 +50,13 @@ public class PointDatabase
 	 */
 	public void put(String name, double x, double y)
 	{
-        // TODO
-		//loop through the database and see if the element exists using the compareTo method
-		//if it returns 0 then do not add
-		//if it is 
+		_factory.put(name , x ,y);
+		
 	}
 
+	
+	
+	
 	/**
 	 * Given raw coordinates of a point, determine if it is named.
 	 * 
@@ -62,21 +65,21 @@ public class PointDatabase
 	 */
 	public String getName(double x, double y)
 	{
-        //check that the point exists in the factory
-		if(_factory.contains(x, y)) {
-			//if it does, check that it has a name
-			Point p= _factory.get(x, y);
-			if(p._name != null) {return p._name;}
-		}
-		return "unnamed";
+        return _factory.get(x, y)._name;
 		
 	}
+	
+	
+	
 	
 	public String getName(Point pt)
 	{
 		//get the name of the input point
 		return pt._name;
 	}
+	
+	
+	
 
 	/**
 	 * Given the name of a point, determine the coordinates.
@@ -90,6 +93,8 @@ public class PointDatabase
 		
 	}
 
+	
+	
 	/**
 	 * Given a point, acquire the stored database object; facilitates
 	 * singular objects and mitigates lingering copies of points.
@@ -99,9 +104,17 @@ public class PointDatabase
 	 */
 	public Point getPoint(Point pt)
 	{
-        // TODO
+		//get the x and y values from input
+		if(_factory.contains(pt)) {
+			return _factory.get(pt);
+		}
+		//if the factory doesn't contain then return null
+		return null;
+		
 	}
 
+	
+	
 	/**
 	 * Given a raw point (x, y), acquire the stored database object .
 	 * 

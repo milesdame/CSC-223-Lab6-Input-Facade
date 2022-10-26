@@ -91,7 +91,6 @@ public class Point implements Comparable<Point>
 		
 		if(p2 == null){return  1;}
 		
-		
 		//if the x value of p1 is greater than p2, return -1
 		if(p1._x < p2._x) {return -1;}
 		if(p1._x > p2._x) {return 1;}

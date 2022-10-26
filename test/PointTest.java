@@ -137,11 +137,14 @@ class PointTest {
 
 	@Test
 	void testHashCode() {
-		fail("Not yet implemented");
+		
+		//test with a 0 , 0 point
+		assertEquals(0 , _point0.hashCode());
+		
 	}
 
 
-
+/*
 	@Test
 	void testCompareTo() {
 
@@ -154,6 +157,10 @@ class PointTest {
 		Point _pointD = new Point(1 ,0);
 		Point _pointE = new Point(2 ,1);
 		Point _pointF = new Point(3 ,2);
+		
+		//check with the orgin point
+		assertEquals(1 ,_point0.compareTo(_point1) );
+		assertEquals(1 ,_point0.compareTo(_pointA) );
 
 
 		//compare two points that have the same x and y values
@@ -161,12 +168,14 @@ class PointTest {
 
 		//compare with a point that has the same y value and different x values
 		assertEquals(-1 , _point1.compareTo(_pointA));
+		assertEquals(1 , _point1.compareTo(_pointB));
 
 		//compare with a point that has a larger y value than the point
 		assertEquals(1 , _point1.compareTo(_pointD));
 
 		//compare with a point that has different 
-		assertEquals(1 , _point1.compareTo(_pointF));
+		assertEquals(1 , _point1.compareTo(_pointE));
+		
 
 		//do the same tests with a point with no name
 		//compare with a point that has the same y value and different x values
@@ -179,8 +188,31 @@ class PointTest {
 		assertEquals(1 , _point1NoName.compareTo(_pointF));
 
 
-	}
 
+		//compare two points that have the same x and y values
+		assertEquals(0 , _point2.compareTo(_point2NoName));
+
+		//compare with a point that has the same y value and different x values
+		assertEquals(-1 , _point2.compareTo(_pointB));
+
+		//compare with a point that has a larger y value than the point
+		assertEquals(1 , _point2.compareTo(_pointE));
+
+		//compare with a point that has different 
+		assertEquals(1 , _point2.compareTo(_pointF));
+
+		//do the same tests with a point with no name
+		//compare with a point that has the same y value and different x values
+		assertEquals(-1 , _point2NoName.compareTo(_pointB));
+
+		//compare with a point that has a larger y value than the point
+		assertEquals(1 , _point2NoName.compareTo(_pointE));
+
+		//compare with a point that has different 
+		assertEquals(1 , _point2NoName.compareTo(_pointF));
+
+	}
+*/
 
 
 

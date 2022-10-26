@@ -9,5 +9,5 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="/CSC-223-Lab4/lib/json-20220320.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="bin-test"/>
 </classpath>

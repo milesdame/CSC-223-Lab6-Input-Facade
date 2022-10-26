@@ -89,7 +89,14 @@ public class PointDatabase
 	 */
 	public Point getPoint(String name)
 	{
-        // TODO
+
+		List<Point> pointList = new ArrayList<Point>(_factory.getAllPoints());
+		
+		for(Point p: pointList) {
+			if(p._name == name) {return p;	
+			}
+		}
+		return null;
 		
 	}
 

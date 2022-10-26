@@ -85,8 +85,8 @@ public class Point implements Comparable<Point>
 	public static int LexicographicOrdering(Point p1, Point p2)
 	{
 		// TODO
-		//NULL CASE??
-		if((p1==null) || (p2 == null)){return WHAT;}
+		//NULL CASE
+		if((p1 == null) || (p2 == null)){return WHAT;}
 		
 		
 		//if the x value of p1 is greater than p2, return -1

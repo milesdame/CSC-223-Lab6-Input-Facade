@@ -26,11 +26,13 @@ public class PointDatabase
 	public PointDatabase()
 	{
         // TODO
+		_factory = new PointNamingFactory();
 	}
 
 	public PointDatabase(List<Point> points)
 	{
         // TODO
+		_factory = new PointNamingFactory(points);
 	}
 
 	public int size() { return _factory.size(); }
@@ -48,6 +50,9 @@ public class PointDatabase
 	public void put(String name, double x, double y)
 	{
         // TODO
+		//loop through the database and see if the element exists using the compareTo method
+		//if it returns 0 then do not add
+		//if it is 
 	}
 
 	/**
@@ -60,9 +65,11 @@ public class PointDatabase
 	{
         // TODO
 	}
+	
 	public String getName(Point pt)
 	{
-        // TODO
+		//get the name of the input point
+		return pt._name;
 	}
 
 	/**

@@ -86,7 +86,6 @@ public class PointNamingFactory
 	 */
 	public Point put(double x, double y)
 	{
-		// TODO
 		if (contains(x, y)) { return get(x, y);}
 		Point point = new Point(getCurrentName(), x, y);
 		
@@ -185,7 +184,6 @@ public class PointNamingFactory
 	 */
 	private String getCurrentName()
 	{
-        // TODO
 		String name = _currentName;
 		updateName();
 		return name;
@@ -231,7 +229,15 @@ public class PointNamingFactory
 	@Override
 	public String toString()
 	{
-        // TODO
-		
+        Set<Point> points = getAllPoints();
+        StringBuilder sb = new StringBuilder();
+        
+        for (Point p : points) {
+        	String pointStr = "Name: " + p.getName() + ", X : " + p.getX() + ", Y : " + p.getY();
+        	sb.append(pointStr);
+        	
+        }
+        
+        return sb.toString();	
 	}
 }

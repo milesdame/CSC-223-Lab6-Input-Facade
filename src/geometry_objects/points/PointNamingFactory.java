@@ -166,7 +166,11 @@ public class PointNamingFactory
 	{
 		if (contains(x, y)) { return get(x, y); }
 		
-		return put(getCurrentName(), x, y);
+		Point point = new Point(name, x, y);
+		
+		_database.put(point, point);
+		
+		return point;
 		
 	}
 

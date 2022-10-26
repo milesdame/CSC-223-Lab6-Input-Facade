@@ -112,14 +112,27 @@ class PointTest {
 
 	@Test
 	void testHashCode() {
-		
+
 		//test with a 0 , 0 point
 		assertEquals(0 , _point0.hashCode());
-		
-		assertEquals(2 , _point1.hashCode());
-		
-		assertFalse(_point1.hashCode()==3);
-		
+
+		assertEquals(_point1NoName.hashCode() , _point1.hashCode());
+
+		assertEquals(_point2NoName.hashCode() , _point2.hashCode());
+
+		assertEquals(_point3NoName.hashCode() , _point3.hashCode());
+
+		assertTrue(_point0.hashCode()==_point0.hashCode());
+		assertTrue(_point1.hashCode()==_point1.hashCode());
+		assertTrue(_point2.hashCode()==_point2.hashCode());
+		assertTrue(_point3.hashCode()==_point3.hashCode());
+
+		assertFalse(_point3.hashCode()==_point1.hashCode());
+		assertFalse(_point1.hashCode()==_point2.hashCode());
+		assertFalse(_point2.hashCode()==_point3.hashCode());
+		assertFalse(_point3.hashCode()==_point0.hashCode());
+
+
 	}
 
 
@@ -130,13 +143,14 @@ class PointTest {
 		//make points that have the same x value and different y value
 		Point _pointA = new Point(0 ,1);
 		Point _pointB = new Point(1 ,2);
-		//Point _pointC = new Point(2 ,3);
+		Point _pointC = new Point(2 ,3);
 
 		//make points where the y value is less than the x value
 		Point _pointD = new Point(1 ,0);
 		Point _pointE = new Point(2 ,1);
 		Point _pointF = new Point(3 ,2);
-		
+		Point _pointG = new Point(7 ,0);
+
 		//check with the orgin point
 		assertEquals(-1 ,_point0.compareTo(_point1) );
 		assertEquals(-1 ,_point0.compareTo(_pointA) );
@@ -150,7 +164,7 @@ class PointTest {
 		assertEquals(-1 , _point1.compareTo(_pointB));
 		assertEquals(1 , _point1.compareTo(_pointD));
 		assertEquals(-1 , _point1.compareTo(_pointE));
-		
+
 
 		//do the same tests with a point with no name
 		//compare with a point that has the same y value and different x values
@@ -161,6 +175,7 @@ class PointTest {
 
 		//compare two points that have the same x and y values
 		assertEquals(0 , _point2.compareTo(_point2NoName));
+
 		//compare two points that have different x and y values
 		assertEquals(1 , _point2.compareTo(_pointB));
 		assertEquals(1 , _point2.compareTo(_pointE));
@@ -171,6 +186,11 @@ class PointTest {
 		assertEquals(1 , _point2NoName.compareTo(_pointB));
 		assertEquals(1 , _point2NoName.compareTo(_pointE));
 		assertEquals(-1 , _point2NoName.compareTo(_pointF));
+
+		//compare two points that have different x and y values
+		assertEquals(1 , _point3.compareTo(_pointC));
+		assertEquals(1 , _point3.compareTo(_pointF));
+		assertEquals(-1 , _point3.compareTo(_pointG));
 
 	}
 

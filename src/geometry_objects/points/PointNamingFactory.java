@@ -184,7 +184,7 @@ public class PointNamingFactory
 	 */
 	private String getCurrentName()
 	{
-		String name = _currentName;
+		String name = _PREFIX + _currentName;
 		updateName();
 		return name;
 	}
@@ -195,23 +195,23 @@ public class PointNamingFactory
 	 */
 	private void updateName() {
 		char currChar = _currentName.charAt(0);
+		StringBuilder sb = new StringBuilder();
 		
-		String newName = "";
 	
 		if (currChar == END_LETTER) {
 			_numLetters++;
 			for (int i = 0; i < _numLetters; i++) {
-				newName += START_LETTER;
+				sb.append(START_LETTER);
 			}
 		}
 		
 		else {
 			currChar++;
 			for (int i = 0; i < _numLetters; i++) {
-				newName += currChar;
+				sb.append(currChar);
 			}
 		}
-		
+		_currentName = sb.toString();
 	}
 
 

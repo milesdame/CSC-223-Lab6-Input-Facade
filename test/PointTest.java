@@ -69,7 +69,7 @@ class PointTest {
 
 		//check that the name of the orgin point has been updated to 
 		//be the orgin
-		assertEquals("Orgin" , _point0.getName());
+		assertEquals("__UNNAMED" , _point0.getName());
 
 		assertEquals("point1" , _point1.getName());
 
@@ -88,36 +88,11 @@ class PointTest {
 
 
 
-	@Test
-	void testIsGenerated() {
-
-		//all points should be generated
-
-		//ensure that the points are being generated
-		assertTrue(_point0.isGenerated());
-
-		assertTrue(_point1.isGenerated());
-
-		assertTrue(_point2.isGenerated());
-
-		assertTrue(_point3.isGenerated());
-
-		//ensure that the unnamed points are also being generated
-		assertTrue(_point1NoName.isGenerated());
-
-		assertTrue(_point2NoName.isGenerated());
-
-		assertTrue(_point3NoName.isGenerated());
-
-
-	}
-
-
 
 	@Test
 	void testIsUnnamed() {
 		//ensure that the points are being generated
-		assertFalse(_point0.isUnnamed());
+		assertTrue(_point0.isUnnamed());
 
 		assertFalse(_point1.isUnnamed());
 
@@ -137,14 +112,31 @@ class PointTest {
 
 	@Test
 	void testHashCode() {
-		
+
 		//test with a 0 , 0 point
 		assertEquals(0 , _point0.hashCode());
-		
+
+		assertEquals(_point1NoName.hashCode() , _point1.hashCode());
+
+		assertEquals(_point2NoName.hashCode() , _point2.hashCode());
+
+		assertEquals(_point3NoName.hashCode() , _point3.hashCode());
+
+		assertTrue(_point0.hashCode()==_point0.hashCode());
+		assertTrue(_point1.hashCode()==_point1.hashCode());
+		assertTrue(_point2.hashCode()==_point2.hashCode());
+		assertTrue(_point3.hashCode()==_point3.hashCode());
+
+		assertFalse(_point3.hashCode()==_point1.hashCode());
+		assertFalse(_point1.hashCode()==_point2.hashCode());
+		assertFalse(_point2.hashCode()==_point3.hashCode());
+		assertFalse(_point3.hashCode()==_point0.hashCode());
+
+
 	}
 
 
-/*
+
 	@Test
 	void testCompareTo() {
 
@@ -157,62 +149,51 @@ class PointTest {
 		Point _pointD = new Point(1 ,0);
 		Point _pointE = new Point(2 ,1);
 		Point _pointF = new Point(3 ,2);
-		
+		Point _pointG = new Point(7 ,0);
+
 		//check with the orgin point
-		assertEquals(1 ,_point0.compareTo(_point1) );
-		assertEquals(1 ,_point0.compareTo(_pointA) );
+		assertEquals(-1 ,_point0.compareTo(_point1) );
+		assertEquals(-1 ,_point0.compareTo(_pointA) );
 
 
 		//compare two points that have the same x and y values
 		assertEquals(0 , _point1.compareTo(_point1NoName));
 
 		//compare with a point that has the same y value and different x values
-		assertEquals(-1 , _point1.compareTo(_pointA));
-		assertEquals(1 , _point1.compareTo(_pointB));
-
-		//compare with a point that has a larger y value than the point
+		assertEquals(1 , _point1.compareTo(_pointA));
+		assertEquals(-1 , _point1.compareTo(_pointB));
 		assertEquals(1 , _point1.compareTo(_pointD));
+		assertEquals(-1 , _point1.compareTo(_pointE));
 
-		//compare with a point that has different 
-		assertEquals(1 , _point1.compareTo(_pointE));
-		
 
 		//do the same tests with a point with no name
 		//compare with a point that has the same y value and different x values
-		assertEquals(-1 , _point1NoName.compareTo(_pointA));
-
-		//compare with a point that has a larger y value than the point
+		assertEquals(1 , _point1NoName.compareTo(_pointA));
 		assertEquals(1 , _point1NoName.compareTo(_pointD));
-
-		//compare with a point that has different 
-		assertEquals(1 , _point1NoName.compareTo(_pointF));
-
+		assertEquals(-1 , _point1NoName.compareTo(_pointF));
 
 
 		//compare two points that have the same x and y values
 		assertEquals(0 , _point2.compareTo(_point2NoName));
 
-		//compare with a point that has the same y value and different x values
-		assertEquals(-1 , _point2.compareTo(_pointB));
-
-		//compare with a point that has a larger y value than the point
+		//compare two points that have different x and y values
+		assertEquals(1 , _point2.compareTo(_pointB));
 		assertEquals(1 , _point2.compareTo(_pointE));
-
-		//compare with a point that has different 
-		assertEquals(1 , _point2.compareTo(_pointF));
+		assertEquals(-1 , _point2.compareTo(_pointF));
 
 		//do the same tests with a point with no name
 		//compare with a point that has the same y value and different x values
-		assertEquals(-1 , _point2NoName.compareTo(_pointB));
-
-		//compare with a point that has a larger y value than the point
+		assertEquals(1 , _point2NoName.compareTo(_pointB));
 		assertEquals(1 , _point2NoName.compareTo(_pointE));
+		assertEquals(-1 , _point2NoName.compareTo(_pointF));
 
-		//compare with a point that has different 
-		assertEquals(1 , _point2NoName.compareTo(_pointF));
+		//compare two points that have different x and y values
+		assertEquals(1 , _point3.compareTo(_pointC));
+		assertEquals(1 , _point3.compareTo(_pointF));
+		assertEquals(-1 , _point3.compareTo(_pointG));
 
 	}
-*/
+
 
 
 

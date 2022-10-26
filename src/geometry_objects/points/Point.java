@@ -75,6 +75,7 @@ public class Point implements Comparable<Point>
 			   Double.valueOf(MathUtilities.removeLessEpsilon(_y)).hashCode();
 	}
 
+	
 	/**
 	 * 
 	 * @param p1 Point 1

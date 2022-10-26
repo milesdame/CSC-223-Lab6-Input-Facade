@@ -104,12 +104,7 @@ public class PointDatabase
 	 */
 	public Point getPoint(Point pt)
 	{
-		//get the x and y values from input
-		if(_factory.contains(pt)) {
-			return _factory.get(pt);
-		}
-		//if the factory doesn't contain then return null
-		return null;
+		return _factory.get(pt);
 		
 	}
 
@@ -123,9 +118,6 @@ public class PointDatabase
 	 */
 	public Point getPoint(double x, double y)
 	{
-		if(_factory.contains(x, y)) {
-			return _factory.get(x, y);
-		}
-		return null;
+		return _factory.get(x, y);
 	}
 }

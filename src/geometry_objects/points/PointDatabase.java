@@ -25,13 +25,12 @@ public class PointDatabase
     
 	public PointDatabase()
 	{
-        // TODO
+		
 		_factory = new PointNamingFactory();
 	}
 
 	public PointDatabase(List<Point> points)
 	{
-        // TODO
 		_factory = new PointNamingFactory(points);
 	}
 
@@ -63,7 +62,14 @@ public class PointDatabase
 	 */
 	public String getName(double x, double y)
 	{
-        // TODO
+        //check that the point exists in the factory
+		if(_factory.contains(x, y)) {
+			//if it does, check that it has a name
+			Point p= _factory.get(x, y);
+			if(p._name != null) {return p._name;}
+		}
+		return "unnamed";
+		
 	}
 	
 	public String getName(Point pt)
@@ -81,6 +87,7 @@ public class PointDatabase
 	public Point getPoint(String name)
 	{
         // TODO
+		
 	}
 
 	/**
@@ -103,6 +110,9 @@ public class PointDatabase
 	 */
 	public Point getPoint(double x, double y)
 	{
-        // TODO
+		if(_factory.contains(x, y)) {
+			return _factory.get(x, y);
+		}
+		return null;
 	}
 }

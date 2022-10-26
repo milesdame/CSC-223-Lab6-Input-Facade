@@ -12,7 +12,7 @@ class InputFacadeTest {
 
 	@Test
 	void test() {
-		FigureNode figNode = InputFacade.extractFigure("/jsonfiles.lineseg");
+		FigureNode figNode = InputFacade.extractFigure("jsonfiles/point.json");
 		StringBuilder sb = new StringBuilder();
 		UnparseVisitor unparser = new UnparseVisitor();
 		

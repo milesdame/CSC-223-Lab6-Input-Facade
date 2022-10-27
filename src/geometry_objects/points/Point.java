@@ -4,6 +4,7 @@
 
 package geometry_objects.points;
 
+import input.components.point.PointNode;
 import utilities.math.MathUtilities;
 
 /**
@@ -118,10 +119,23 @@ public class Point implements Comparable<Point>
 	
 	
 	
-	
-	public boolean equals(Point p1 , Point p2) {
+	/**
+	 * Compare this with a given object for equality; returns true
+	 * if they are equal, false otherwise.
+	 * @param obj
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		//check if obj is null or of different class
+		if (obj == null) return false;
+		if (obj.getClass() != this.getClass()) return false;
 		
-		return (p1.compareTo(p2)==0);
-		
+		Point objAsPoint = (Point) obj;
+		//check obj address and coordinates
+		if (this == obj) return true; 
+		if (MathUtilities.doubleEquals(this.getX(),objAsPoint.getX()) && 
+			MathUtilities.doubleEquals(this.getY(),objAsPoint.getY())) return true;
+		return false;
 	}
+	
 }

@@ -50,6 +50,7 @@ public class InputFacade
 	 */
 	public static Map.Entry<PointDatabase, Set<Segment>> toGeometryRepresentation(String filename)
 	{
+
 		FigureNode figNode = extractFigure(filename);
 		PointDatabase pointData = new PointDatabase();
 		LinkedHashSet<Segment> segData = new LinkedHashSet<Segment>();
@@ -57,8 +58,8 @@ public class InputFacade
 		
 		//Get PointNode set
 		Set<PointNode> PND = figNode.getPointsDatabase().getPoints();
-		//for each pointNode in set, convert to point and add to pointDatabase
 		
+		//for each pointNode in set, convert to point and add to pointDatabase
 		for (PointNode pointNode : PND) {
 			
 			pointData.put(pointNode.getName(),pointNode.getX(),pointNode.getY());

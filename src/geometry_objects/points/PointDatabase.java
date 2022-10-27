@@ -100,8 +100,12 @@ public class PointDatabase
 		
 	}
 	
-	public String toString(Point pt) {
-		return pt.getName() + ", (" + pt.getX() + pt.getY() + ")";
+	
+	/*
+	 * To string method to help with testing purposes
+	 */
+	public String toString(String name , double x , double y) {
+		return name + ", (" + x + y + ")";
 	}
 
 	

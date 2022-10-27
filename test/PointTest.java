@@ -41,6 +41,15 @@ class PointTest {
 		assertEquals(3 , _point3NoName.getX());
 	}
 
+	@Test
+	void testEquals() {
+		
+		assertEquals(0 , _point1.compareTo(_point1NoName)); 
+		
+		assertFalse(_point0.equals(_point1));
+		
+		assertEquals(0 , _point1.compareTo(_point1NoName));
+	}
 
 	@Test
 	void testGetY() {

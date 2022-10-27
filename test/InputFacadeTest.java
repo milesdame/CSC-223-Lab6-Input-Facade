@@ -1,12 +1,19 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.AbstractMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
 
 import input.InputFacade;
 import input.components.FigureNode;
 import input.visitor.UnparseVisitor;
 
 import org.junit.jupiter.api.Test;
+
+import geometry_objects.Segment;
+import geometry_objects.points.Point;
+import geometry_objects.points.PointDatabase;
 
 class InputFacadeTest {
 
@@ -284,6 +291,31 @@ class InputFacadeTest {
 		
 		assertEquals(expected, sb.toString());
 	}
+	
+	@Test
+	void GeometryRepresentationTest() {
+		Map.Entry<PointDatabase, Set<Segment>> newMap = InputFacade.toGeometryRepresentation("jsonfiles/lineseg.json");
+		Set<Segment> SGT = newMap.getValue();
+		LinkedHashSet<Segment> test = new LinkedHashSet<Segment>();
+		Point point1 = new Point("A ", 0, 0);
+		Point point2 = new Point("B ", 0, 1);
+		Segment seg1 = new Segment(point1,point2);
+	
+		test.add(seg1);
+		
+		for (Segment seg : SGT) {
+			assertTrue(test.contains(seg));
+		}
+		
+		
+		//assertTrue(SGT.contains(seg1));
+		assertEquals(SGT.size(), test.size());
+		
+		
+		
+		
+	}
+	
 	
 
 }

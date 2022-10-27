@@ -44,11 +44,11 @@ class PointTest {
 	@Test
 	void testEquals() {
 		
-		assertEquals(0 , _point1.compareTo(_point1NoName)); 
+		assertEquals(-10 , _point1.compareTo(_point1NoName)); 
 		
-		assertFalse(_point0.equals(_point1));
+		assertEquals(false ,_point0.equals(_point1NoName));
 		
-		assertEquals(0 , _point1.compareTo(_point1NoName));
+		//assertEquals());
 	}
 
 	@Test

@@ -89,9 +89,9 @@ public class Point implements Comparable<Point>
 		// TODO
 		//either of the nodes are null
 		//then return the correct value where the other node is larger
-		//if(p1 == null){return  -1;}
+		if(p1._name == null){return  -10;}
 		
-		//if(p2 == null){return  1;}
+		if(p2 == null){return  1;}
 		
 		//if the x value of p1 is greater than p2, return -1
 		if(p1._x < p2._x) {return -1;}

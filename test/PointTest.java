@@ -44,11 +44,23 @@ class PointTest {
 	@Test
 	void testEquals() {
 		
-		assertEquals(-10 , _point1.compareTo(_point1NoName)); 
+		//compare points that have the same x and y coordinates
+		assertEquals(0 , _point1.compareTo(_point1NoName)); 
 		
-		assertEquals(false ,_point0.equals(_point1NoName));
+		assertFalse(_point0.equals(_point1NoName));
 		
-		//assertEquals());
+		assertTrue(_point1.equals(_point1NoName));
+		
+		assertTrue(_point2.equals(_point2NoName));
+		
+		//compare points that have different x and y values
+		assertFalse(_point1.equals(_point2NoName));
+		
+		assertTrue(_point1NoName.equals(_point1));
+		
+		
+		
+		
 	}
 
 	@Test
@@ -131,15 +143,23 @@ class PointTest {
 
 		assertEquals(_point3NoName.hashCode() , _point3.hashCode());
 
+		//points with the 
 		assertTrue(_point0.hashCode()==_point0.hashCode());
-		assertTrue(_point1.hashCode()==_point1.hashCode());
-		assertTrue(_point2.hashCode()==_point2.hashCode());
-		assertTrue(_point3.hashCode()==_point3.hashCode());
+		assertTrue(_point1.hashCode()==_point1NoName.hashCode());
+		assertTrue(_point2.hashCode()==_point2NoName.hashCode());
+		assertTrue(_point3.hashCode()==_point3NoName.hashCode());
 
+		//test that different values return different hash code
 		assertFalse(_point3.hashCode()==_point1.hashCode());
 		assertFalse(_point1.hashCode()==_point2.hashCode());
 		assertFalse(_point2.hashCode()==_point3.hashCode());
 		assertFalse(_point3.hashCode()==_point0.hashCode());
+		
+		//test that the two values are the same with different names
+		assertEquals(_point0.hashCode(), _point0.hashCode());
+		assertEquals(_point1.hashCode(), _point1NoName.hashCode());
+		assertEquals(_point2.hashCode(), _point2NoName.hashCode());
+		assertEquals(_point3.hashCode(), _point3NoName.hashCode());
 
 
 	}

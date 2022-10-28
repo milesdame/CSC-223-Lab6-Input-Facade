@@ -16,7 +16,7 @@ import geometry_objects.points.Point;
 import geometry_objects.points.PointDatabase;
 
 class InputFacadeTest {
-
+	
 //Extract Figure Tests
 	
 	@Test

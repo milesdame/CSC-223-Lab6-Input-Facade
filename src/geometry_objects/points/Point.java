@@ -4,7 +4,7 @@
 
 package geometry_objects.points;
 
-import input.components.point.PointNode;
+//import input.components.point.PointNode;
 import utilities.math.MathUtilities;
 
 /**
@@ -12,8 +12,14 @@ import utilities.math.MathUtilities;
  * 
  * Points are ordered lexicographically (thus implementing the Comparable interface)
  * 
- * @author xxx
+ * @author Sally Stahl
+ * @date October 26, 2022
+ * 
  */
+
+
+
+
 public class Point implements Comparable<Point>
 {
 	public static final String ANONYMOUS = "__UNNAMED";
@@ -86,7 +92,6 @@ public class Point implements Comparable<Point>
 	 */
 	public static int LexicographicOrdering(Point p1, Point p2)
 	{
-		// TODO
 		//either of the nodes are null
 		//then return the correct value where the other node is larger
 		if(p1._name == null){return  -10;}

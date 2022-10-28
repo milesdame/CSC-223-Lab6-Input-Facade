@@ -42,8 +42,8 @@ public class PointNamingFactory
 	 */
 	public PointNamingFactory(List<Point> points)
 	{
-		// TODO
-		
+
+		// Loop through the list of points and add them to the _database
 		for (Point p : points) {
 			if (p.isUnnamed()) {
 				put(getCurrentName(), p.getX(), p.getY());
@@ -54,6 +54,14 @@ public class PointNamingFactory
 		//Check if the String first char is Z 
 		// If it is repeat for second char
 		// If it isn't then increment that char
+	}
+	
+	public String getCurrName() {
+		return this.getCurrentName();
+	}
+	
+	public int getNumLetters() {
+		return _numLetters;
 	}
 
 	/**

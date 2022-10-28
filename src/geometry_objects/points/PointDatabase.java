@@ -93,21 +93,12 @@ public class PointDatabase
 		List<Point> pointList = new ArrayList<Point>(_factory.getAllPoints());
 		
 		for(Point p: pointList) {
-			if(p._name == name) {return p;	
-			}
+			if(p._name == name) {return p;}
 		}
 		return null;
 		
 	}
 	
-	
-	/*
-	 * To string method to help with testing purposes
-	 */
-	public String toString(String name , double x , double y) {
-		return name + ", (" + x + y + ")";
-	}
-
 	
 	
 	/**

@@ -42,13 +42,21 @@ public class PointNamingFactory
 	 */
 	public PointNamingFactory(List<Point> points)
 	{
+		_database = new LinkedHashMap<Point, Point>();
 
 		// Loop through the list of points and add them to the _database
 		for (Point p : points) {
-			if (p.isUnnamed()) {
-				put(getCurrentName(), p.getX(), p.getY());
+			if (p.isUnnamed() && p != null) {
+				//System.out.println("size: " + this.size());
+				Point np = new Point(getCurrentName(), p.getX(), p.getY());
+				//System.out.println(np.getName());
+				this.put(np); 
 			}
-			else { put(p); }
+			if (!p.isUnnamed() && p != null){ 
+				//System.out.println("size: " + this.size());
+				//System.out.println(p.getName());
+				this.put(p); 
+			}
 		}
 		
 		//Check if the String first char is Z 
@@ -71,16 +79,16 @@ public class PointNamingFactory
 	 */
 	public Point put(Point pt)
 	{
-		
+		Point point;
 		if (!contains(pt)) {
 			if (pt.isUnnamed()) {
-				Point point = new Point(this.getCurrentName(), pt._x, pt.getY());
+				 point = lookupExisting(this.getCurrentName(), pt._x, pt.getY());
 				_database.put(point, point);
 				return point;
 			}
-
-		_database.put(pt, pt);
-		return pt;
+		point = lookupExisting(pt.getName(), pt._x, pt.getY());
+		_database.put(point, point);
+		return point;
 			
 		}
 		
@@ -94,10 +102,12 @@ public class PointNamingFactory
 	 */
 	public Point put(double x, double y)
 	{
-		if (contains(x, y)) { return get(x, y);}
-		Point point = new Point(getCurrentName(), x, y);
+
+		Point point = lookupExisting(getCurrentName(), x, y);
+		_database.put(point, point);
 		
 		return point;
+		
 	}
 
 	/**
@@ -113,9 +123,15 @@ public class PointNamingFactory
 	 *         
 	 *         The exception is that a valid name can overwrite an unnamed point.
 	 */
-	public Point put(String name, double x, double y)
-	{
-		return lookupExisting(name, x, y);
+	public Point put(String name, double x, double y) {
+		Point point;
+		if (name == null) { 
+			point = lookupExisting(getCurrentName(), x, y);
+			return put(x, y);
+		}
+		point = lookupExisting(name, x, y);
+		_database.put(point, point);
+		return point;
 	}    
 
 	/**
@@ -152,7 +168,7 @@ public class PointNamingFactory
 	private Point lookupExisting(String name, double x, double y)
 	{
 		// TODO
-		if (!contains(x, y)) { return createNewPoint(getCurrentName(), x, y); }
+		if (!contains(x, y)) { return createNewPoint(name, x, y); }
 		
 		return get(x, y);
 	}  
@@ -175,8 +191,6 @@ public class PointNamingFactory
 		if (contains(x, y)) { return get(x, y); }
 		
 		Point point = new Point(name, x, y);
-		
-		_database.put(point, point);
 		
 		return point;
 		
@@ -245,7 +259,7 @@ public class PointNamingFactory
         StringBuilder sb = new StringBuilder();
         
         for (Point p : points) {
-        	String pointStr = "Name: " + p.getName() + ", X : " + p.getX() + ", Y : " + p.getY();
+        	String pointStr = "Name: " + p.getName() + ", X : " + p.getX() + ", Y : " + p.getY() + "\n";
         	sb.append(pointStr);
         	
         }

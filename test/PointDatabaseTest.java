@@ -89,7 +89,7 @@ class PointDatabaseTest {
 		
 		
 		//check if the name has been updated for the point
-		assertEquals("*_C" , _pointDatabase.getName(2, 2));
+		assertEquals("point2" , _pointDatabase.getName(2, 2));
 		
 		
 
@@ -117,15 +117,15 @@ class PointDatabaseTest {
 
 
 		//test getting the name of some points
-		assertEquals("*_B" ,_pointDatabase.getName(1, 1));
+		assertEquals("point1" ,_pointDatabase.getName(1, 1));
 		
-		assertEquals("*_C" ,_pointDatabase.getName(2, 2));
+		assertEquals("point2" ,_pointDatabase.getName(2, 2));
 		
-		assertEquals("*_D" ,_pointDatabase.getName(3, 3));
+		assertEquals("point3" ,_pointDatabase.getName(3, 3));
 		
-		assertEquals("*_E" ,_pointDatabase.getName(0, 1));
+		assertEquals("point4" ,_pointDatabase.getName(0, 1));
 		
-		assertEquals("*_F" ,_pointDatabase.getName(1, 2));
+		assertEquals("point5" ,_pointDatabase.getName(1, 2));
 
 	
 	}

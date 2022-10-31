@@ -1,3 +1,13 @@
+/**
+ * A database for storing points that also names the points if they have no name when added. 
+ * It also checks for redundancy when adding points and will 
+ * return an existing point if it is already in the database
+ * 
+ * @author Miles Dame
+ * @date October 31, 2022
+ * 
+ */
+
 package geometry_objects.points;
 
 import java.util.LinkedHashMap;

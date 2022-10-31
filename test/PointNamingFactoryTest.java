@@ -111,9 +111,6 @@ public void putTest() {
 	factory.put(2.0, 11.0);
 	
 	Set<Point> pointSet =  factory.getAllPoints();
-	for (Point p : pointSet) {
-		System.out.println(p.getX() + " " + p.getY());
-	}
 
 	assertTrue(factory.contains(1.0, 1.0));
 	assertTrue(factory.contains(0.0, 0.0));

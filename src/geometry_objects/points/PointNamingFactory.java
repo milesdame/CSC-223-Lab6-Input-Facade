@@ -56,28 +56,30 @@ public class PointNamingFactory
 
 		// Loop through the list of points and add them to the _database
 		for (Point p : points) {
+			// If not named then give it a name and add it to the database
 			if (p.isUnnamed() && p != null) {
-				//System.out.println("size: " + this.size());
 				Point np = new Point(getCurrentName(), p.getX(), p.getY());
-				//System.out.println(np.getName());
 				this.put(np); 
 			}
+			// if named add to the database
 			if (!p.isUnnamed() && p != null){ 
-				//System.out.println("size: " + this.size());
-				//System.out.println(p.getName());
 				this.put(p); 
 			}
 		}
-		
-		//Check if the String first char is Z 
-		// If it is repeat for second char
-		// If it isn't then increment that char
 	}
 	
+	/**
+	 * 
+	 * @return String - name of the point
+	 */
 	public String getCurrName() {
 		return this.getCurrentName();
 	}
 	
+	/**
+	 * 
+	 * @return int the number of letters in the current name
+	 */
 	public int getNumLetters() {
 		return _numLetters;
 	}
@@ -90,18 +92,24 @@ public class PointNamingFactory
 	public Point put(Point pt)
 	{
 		Point point;
+		// Check if the point already exists in the database
 		if (!contains(pt)) {
+			// Check if the point is named
 			if (pt.isUnnamed()) {
+				// If it isn't then look up existing and generate a name
 				 point = lookupExisting(this.getCurrentName(), pt._x, pt.getY());
+				 // Add to the database and return
 				_database.put(point, point);
 				return point;
 			}
+		// If the point is named then add it to the database 
 		point = lookupExisting(pt.getName(), pt._x, pt.getY());
 		_database.put(point, point);
 		return point;
 			
 		}
 		
+		// If the point is in the database then get and return it.
 		return _database.get(pt);
 	}
 
@@ -112,7 +120,7 @@ public class PointNamingFactory
 	 */
 	public Point put(double x, double y)
 	{
-
+		// see if the point exists 
 		Point point = lookupExisting(getCurrentName(), x, y);
 		_database.put(point, point);
 		

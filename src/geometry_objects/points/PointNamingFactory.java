@@ -143,10 +143,12 @@ public class PointNamingFactory
 	 */
 	public Point put(String name, double x, double y) {
 		Point point;
+		// If the name is null than generate a name
 		if (name == null) { 
 			point = lookupExisting(getCurrentName(), x, y);
-			return put(x, y);
+			return put(point);
 		}
+		// Otherwise add the point to the database
 		point = lookupExisting(name, x, y);
 		_database.put(point, point);
 		return point;
@@ -185,7 +187,7 @@ public class PointNamingFactory
 	 */
 	private Point lookupExisting(String name, double x, double y)
 	{
-		// TODO
+		// 
 		if (!contains(x, y)) { return createNewPoint(name, x, y); }
 		
 		return get(x, y);
@@ -241,14 +243,14 @@ public class PointNamingFactory
 		char currChar = _currentName.charAt(0);
 		StringBuilder sb = new StringBuilder();
 		
-	
+		// Check if the current name need to be increased in size
 		if (currChar == END_LETTER) {
 			_numLetters++;
 			for (int i = 0; i < _numLetters; i++) {
 				sb.append(START_LETTER);
 			}
 		}
-		
+		// If not then increment the name
 		else {
 			currChar++;
 			for (int i = 0; i < _numLetters; i++) {
